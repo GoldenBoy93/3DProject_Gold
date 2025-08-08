@@ -24,7 +24,6 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     private void Update()
     {
-        Debug.Log(uiCondition);
         // hunger, stamina의 passiveValue를 이용하여 자동으로 감소/증가
         hunger.Subtract(hunger.passiveValue * Time.deltaTime);
         stamina.Add(stamina.passiveValue * Time.deltaTime);
