@@ -10,5 +10,6 @@ public class UICondition : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.Player.condition.uiCondition = this;
+        Debug.Log(GameManager.Instance.Player.condition.uiCondition);
     }
 }

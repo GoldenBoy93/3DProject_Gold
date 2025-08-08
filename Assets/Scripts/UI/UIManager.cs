@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
 
     IntroUI introUI;
-    //GameUI gameUI;
+    GameUI gameUI;
     //GameOverUI gameOverUI;
     private UIState currentState; // 현재 UI 상태
 
@@ -35,8 +35,8 @@ public class UIManager : MonoBehaviour
         // 자식 오브젝트에서 각각의 UI를 찾아 초기화
         introUI = GetComponentInChildren<IntroUI>(true);
         introUI.Init(this);
-        //gameUI = GetComponentInChildren<GameUI>(true);
-        //gameUI.Init(this);
+        gameUI = GetComponentInChildren<GameUI>(true);
+        gameUI.Init(this);
         //gameOverUI = GetComponentInChildren<GameOverUI>(true);
         //gameOverUI.Init(this);
 
@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
 
         // 각 UI가 자신이 보여져야 할 상태인지 판단하고 표시 여부 결정
         introUI.SetActive(currentState);
-        //gameUI.SetActive(currentState);
+        gameUI.SetActive(currentState);
         //gameOverUI.SetActive(currentState);
     }
 }

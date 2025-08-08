@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
 
     private UIManager uiManager;
 
-    private SceneManager sceneManager;
-
     public static GameManager Instance
     {
         get
@@ -59,7 +57,7 @@ public class GameManager : MonoBehaviour
         uiManager.SetPlayGame();
 
         // 씬 매니저를 통해 다음 씬으로 전환
-        SceneManager.instance.ChangeToNextScene();
+        SceneManager.Instance.ChangeToNextScene();
     }
 
     public void GameOver()

@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class GameUI : BaseUI
 {
-    [SerializeField] private TextMeshProUGUI waveText;
-
     protected override UIState GetUIState()
     {
         return UIState.Game;
