@@ -20,8 +20,8 @@ public class ItemObject : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         //Player 스크립트에 상호작용 아이템 data 넘기기.
-        CharacterManager.Instance.Player.itemData = data;
-        CharacterManager.Instance.Player.addItem?.Invoke();
+        GameManager.Instance.Player.itemData = data;
+        GameManager.Instance.Player.addItem?.Invoke();
         Destroy(gameObject);
     }
 }

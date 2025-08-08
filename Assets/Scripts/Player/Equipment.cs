@@ -16,8 +16,8 @@ public class Equipment : MonoBehaviour
 
     void Start()
     {
-        controller = CharacterManager.Instance.Player.controller;
-        condition = CharacterManager.Instance.Player.condition;
+        controller = GameManager.Instance.Player.controller;
+        condition = GameManager.Instance.Player.condition;
     }
 
     public void EquipNew(ItemData data)

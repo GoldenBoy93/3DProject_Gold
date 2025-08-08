@@ -65,7 +65,7 @@ public class NPC : MonoBehaviour, IDamagable
     private void Update()
     {
         // player와의 거리를 매 프레임마다 계산
-        playerDistance = Vector3.Distance(transform.position, CharacterManager.Instance.Player.transform.position);
+        playerDistance = Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position);
 
         animator.SetBool("Moving", aiState != AIState.Idle);
 
@@ -162,7 +162,7 @@ public class NPC : MonoBehaviour, IDamagable
             if (Time.time - lastAttackTime > attackRate)
             {
                 lastAttackTime = Time.time;
-                CharacterManager.Instance.Player.controller.GetComponent<IDamagable>().TakePhysicalDamage(damage);
+                GameManager.Instance.Player.controller.GetComponent<IDamagable>().TakePhysicalDamage(damage);
                 animator.speed = 1;
                 animator.SetTrigger("Attack");
             }
@@ -174,9 +174,9 @@ public class NPC : MonoBehaviour, IDamagable
             {
                 agent.isStopped = false;
                 NavMeshPath path = new NavMeshPath();
-                if (agent.CalculatePath(CharacterManager.Instance.Player.transform.position, path))
+                if (agent.CalculatePath(GameManager.Instance.Player.transform.position, path))
                 {
-                    agent.SetDestination(CharacterManager.Instance.Player.transform.position);
+                    agent.SetDestination(GameManager.Instance.Player.transform.position);
                 }
                 else
                 {
@@ -199,7 +199,7 @@ public class NPC : MonoBehaviour, IDamagable
     bool IsPlayerInFieldOfView()
     {
         // 뱡향 구하기 (타겟 - 내 위치) -- ⓐ
-        Vector3 directionToPlayer = CharacterManager.Instance.Player.transform.position - transform.position;
+        Vector3 directionToPlayer = GameManager.Instance.Player.transform.position - transform.position;
         // 내 정면 방향과 ⓐ 사이의 각도 구하기
         float angle = Vector3.Angle(transform.forward, directionToPlayer);
         // 설정한 시야각의 1/2 보다 작다면 시야각 안에 있는 것.

@@ -12,7 +12,7 @@ public class DamageIndicator : MonoBehaviour
     private void Start()
     {
         // 데미지 받을 때 효과를 PlayerCondition의 데미지 Action에 추가
-        CharacterManager.Instance.Player.condition.onTakeDamage += Flash;
+        GameManager.Instance.Player.condition.onTakeDamage += Flash;
     }
 
     public void Flash()
