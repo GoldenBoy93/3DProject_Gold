@@ -8,7 +8,12 @@ public interface IJumpable
     public void HighJump(int jumpPowerAmount);
 }
 
-public class PlayerController : MonoBehaviour, IJumpable
+public interface PadMovable
+{
+    public void PadMove(Vector2 padMoveVector3, float movingPadSpeed);
+}
+
+public class PlayerController : MonoBehaviour, IJumpable, PadMovable
 {
     [Header("Movement")]
     public float moveSpeed;
@@ -198,5 +203,17 @@ public class PlayerController : MonoBehaviour, IJumpable
     public void HighJump(int jumpPowerAmount)
     {
         rigidbody.AddForce(Vector2.up * jumpPowerAmount, ForceMode.Impulse);
+    }
+
+    public void PadMove(Vector2 padMoveVector3, float movingPadSpeed)
+    {
+        // if (MovingPad 위에 있는지 검사)
+
+        Debug.Log($"Vector2 : {padMoveVector3}, movingPadSpeed : {movingPadSpeed}");
+
+        // MovingPad에서 값을 받아와서 똑같이 이동시킴
+        Vector2 dir = padMoveVector3;
+        dir *= movingPadSpeed;  // 방향에 속력을 곱해준다.
+        rigidbody.velocity = dir;  // 연산된 속도를 velocity(변화량)에 넣어준다.
     }
 }
