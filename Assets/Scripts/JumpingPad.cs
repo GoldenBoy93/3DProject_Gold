@@ -6,7 +6,7 @@ using UnityEngine;
 public class JumpingPad : MonoBehaviour
 {
     public int padJumpPower; // JumpingPad 점프 파워
-    public float padJumpRate; // JumpingPad 점프 빈도
+    public float padJumpRate; // JumpingPad 점프 지연시간
 
     private List<IJumpable> things = new List<IJumpable>();
 
