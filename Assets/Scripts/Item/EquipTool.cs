@@ -27,6 +27,7 @@ public class EquipTool : Equip
     {
         if (!attacking)
         {
+            // 플레이어 스태미너가 소비될 수 있는지 확인(useStamina가 0보다 큰지)
             if (GameManager.Instance.Player.condition.UseStamina(useStamina))
             {
                 attacking = true;
