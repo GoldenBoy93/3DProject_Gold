@@ -27,7 +27,7 @@ public class DayNightCycle : MonoBehaviour
 
     private void Start()
     {
-        timeRate = 1.0f / fullDayLength;
+        timeRate = 0.4f / fullDayLength;
         time = startTime;
     }
 
