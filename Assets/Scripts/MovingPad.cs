@@ -1,20 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovingPad : MonoBehaviour
 {
-    [Header("Movement")]
-    public float moveSpeed;
-    public Vector2 movementVector2;  // 패드 이동방향
-
-    private Rigidbody rigidbody;
+    public float speed = 1f;
+    public float targetPointDistance = 1f;
+    private Vector3 startPoint;
+    bool movingForward = true;
 
     private void Awake()
     {
-        // 위에서 선언한 rigidbody 변수를 현재 오브젝트에 붙어있는 Rigidbody 컴포넌트를 가져와 할당
-        rigidbody = GetComponent<Rigidbody>();
+        startPoint = transform.position;
     }
 
     private void FixedUpdate()
@@ -22,17 +18,29 @@ public class MovingPad : MonoBehaviour
         Move();
     }
 
-    // '패드' 이동 함수
     private void Move()
     {
-        // 앞뒤로만 움직이게 할 함수
-        Vector3 dir = transform.forward * movementVector2.y;
+        // targetPoint는 나아가는중이라면 startPoint에서 targetPointDistance만큼 왼쪽으로 이동한 위치, 아니라면 startPoint 위치
+        Vector3 targetPoint = movingForward ? startPoint - Vector3.right * targetPointDistance : startPoint;
 
-        dir *= moveSpeed;  // 방향에 속력을 곱해준다.
+        // 현재 위치와 타겟포인트의 거리가 0.1 미만이라면 false로 설정
+        if (Vector3.Distance(transform.position, targetPoint) < 0.1f)
+        {
+            // 현재상태의 반대로
+            movingForward = !movingForward;
+            Debug.Log("MovingPad 상태 변경: " + (movingForward ? "나아가는중" : "되돌아가는중"));
+        }
 
-        dir.y = rigidbody.velocity.y;  // y값은 점프시 제외하고는 변화가 없어야하기에 기본 velocity(변화량)의 y 값을 넣어준다.
-
-        rigidbody.velocity = dir;  // 연산된 속도를 velocity(변화량)에 넣어준다.
+        // 나아가는중이라면 왼쪽으로 이동
+        if (movingForward)
+        {
+            transform.position -= transform.right * speed * Time.deltaTime;
+        }
+        // 나아가는중이 아니라면 오른쪽으로 이동
+        else
+        {
+            transform.position += transform.right * speed * Time.deltaTime;
+        }
     }
 
     // 충돌된 객체가 PlayerController를 상속받고 있으면 점프

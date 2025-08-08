@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
+  m_IndirectSpecularColor: {r: 0.15482742, g: 0.34403077, b: 0.5375064, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5122,7 +5123,6 @@ GameObject:
   - component: {fileID: 1464792237}
   - component: {fileID: 1464792236}
   - component: {fileID: 1464792235}
-  - component: {fileID: 1464792238}
   - component: {fileID: 1464792234}
   - component: {fileID: 1464792240}
   - component: {fileID: 1464792239}
@@ -5219,33 +5219,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2011072775}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1464792238
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464792232}
-  serializedVersion: 4
-  m_Mass: 100
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
 --- !u!114 &1464792239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5258,8 +5231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2fd619c9de5f74b8f64e38ab8b6103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  movementVector2: {x: 0, y: 1}
+  speed: 10
+  targetPointDistance: 50
 --- !u!65 &1464792240
 BoxCollider:
   m_ObjectHideFlags: 0
