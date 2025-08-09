@@ -252,8 +252,8 @@ Transform:
   m_GameObject: {fileID: 14313070}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1.5, y: 2, z: 1.5}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
+  m_LocalScale: {x: 0.5, y: 1.4, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 154206095}
@@ -983,7 +983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkRate: 0.05
-  maxCheckDistance: 3
+  maxCheckDistance: 6
   layerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -3860,7 +3860,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7484,10 +7484,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item_Wood
       objectReference: {fileID: 0}
-    - target: {fileID: 1863077295421907313, guid: 5eabdd3129f9b5649b914ef013f81db5, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4679816685383789827, guid: 5eabdd3129f9b5649b914ef013f81db5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.42
@@ -7526,14 +7522,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4679816685383789827, guid: 5eabdd3129f9b5649b914ef013f81db5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9012697881679393116, guid: 5eabdd3129f9b5649b914ef013f81db5, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 9012697881679393116, guid: 5eabdd3129f9b5649b914ef013f81db5, type: 3}
-      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8588,21 +8576,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3649577858122391843, guid: 4bbc3366fc11ef249a1a9d6e334730d6, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3649577858122391843, guid: 4bbc3366fc11ef249a1a9d6e334730d6, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4707639736086174983, guid: 4bbc3366fc11ef249a1a9d6e334730d6, type: 3}
       propertyPath: m_Name
       value: Item_Rock
-      objectReference: {fileID: 0}
-    - target: {fileID: 4707639736086174983, guid: 4bbc3366fc11ef249a1a9d6e334730d6, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

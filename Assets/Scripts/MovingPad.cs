@@ -28,7 +28,6 @@ public class MovingPad : MonoBehaviour
         {
             // 현재상태의 반대로
             movingForward = !movingForward;
-            Debug.Log("MovingPad 상태 변경: " + (movingForward ? "나아가는중" : "되돌아가는중"));
         }
 
         // 나아가는중이라면 왼쪽으로 이동

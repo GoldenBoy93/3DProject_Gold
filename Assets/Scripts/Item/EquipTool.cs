@@ -44,7 +44,6 @@ public class EquipTool : Equip
 
     public void OnHit()
     {
-        // 2°­ Ray º¹½À
         Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
 

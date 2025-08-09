@@ -4,12 +4,12 @@ public class JumpingPad : MonoBehaviour
 {
     public int padJumpPower; // JumpingPad 점프 파워
 
-
-    // 충돌된 객체가 PlayerController를 상속받고 있으면 점프
     private void OnTriggerEnter(Collider other)
     {
-        Rigidbody playerRb = other.GetComponent<Rigidbody>();
+        // 충돌한 콜라이더의 리지드바디를 변수로 가져옴
+        Rigidbody Rb = other.GetComponent<Rigidbody>();
 
-        playerRb.AddForce(Vector2.up * padJumpPower, ForceMode.Impulse);
+        // 리지드바디에 에드포스
+        Rb.AddForce(Vector2.up * padJumpPower, ForceMode.Impulse);
     }
 }
