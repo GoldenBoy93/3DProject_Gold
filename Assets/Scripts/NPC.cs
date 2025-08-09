@@ -22,6 +22,7 @@ public class NPC : MonoBehaviour, IDamagable
     private NavMeshAgent agent;
     public float detectDistance;
     private AIState aiState;
+    public bool aggro; // 선공여부
 
     // Wandering 상태에 필요한 정보
     // min-max 사이의 대기 시간마다 min-max 사이의 거리에 있는 
@@ -118,7 +119,7 @@ public class NPC : MonoBehaviour, IDamagable
         }
 
         // 플레이어와의 거리가 감지 범위 안에 있을 때
-        if (playerDistance < detectDistance)
+        if (aggro == true && playerDistance < detectDistance)
         {
             SetState(AIState.Attacking);
         }

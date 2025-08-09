@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using UnityEngine;
-using UnityEngine.InputSystem;
-
 public class Equipment : MonoBehaviour
 {
     public Equip curEquip;

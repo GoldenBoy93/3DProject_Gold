@@ -1,12 +1,16 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
     private Vector2 curMovementInput;  // 현재 입력 값
+    public float dashSpeed;
+    public float useStamina;  // 대시 시 소모되는 스태미너
+    public bool isDash;  // 대시 여부
     public float jumpPower;
     public LayerMask groundLayerMask;  // 레이어 정보
 
@@ -76,22 +80,52 @@ public class PlayerController : MonoBehaviour
 
     public void OnJumpInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && IsGrounded())
+        if (context.phase == InputActionPhase.Started
+            && IsGrounded()
+            && GameManager.Instance.Player.condition.UseStamina(useStamina))
         {
             rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         }
     }
 
+    public void OnDashInput(InputAction.CallbackContext context)
+    {
+        Debug.Log("대시 입력됨");
+
+        if (context.phase == InputActionPhase.Started)
+        {
+            isDash = true;
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            isDash = false;
+        }
+    }
+
     private void Move()
     {
-        // 현재 입력의 y 값은 z 축(=forward, 앞뒤)에 곱한다.
-        // -> y입력값은 2D에선 앞뒤 이동이 맞지만 3D에서는 z축이 앞뒤 이동이므로 치환이 필요
-        // 현재 입력의 x 값은 x 축(=right, 좌우)에 곱한다.
-        Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
-        dir *= moveSpeed;  // 방향에 속력을 곱해준다.
-        dir.y = rigidbody.velocity.y;  // y값은 점프시 제외하고는 변화가 없어야하기에 기본 velocity(변화량)의 y 값을 넣어준다.
+        // 땅에 있을때만 이동 가능
+        if (IsGrounded())
+        {
+            // 현재 입력의 y 값은 z 축(=forward, 앞뒤)에 곱한다.
+            // -> y입력값은 2D에선 앞뒤 이동이 맞지만 3D에서는 z축이 앞뒤 이동이므로 치환이 필요
+            // 현재 입력의 x 값은 x 축(=right, 좌우)에 곱한다.
+            Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
 
-        rigidbody.velocity = dir;  // 연산된 속도를 velocity(변화량)에 넣어준다.
+            // 대시 여부 + 보유스태미너 에 따라 속도 적용
+            if (isDash == true && GameManager.Instance.Player.condition.UseStamina(useStamina))
+            {
+                dir *= dashSpeed;  // 방향에 Dash속력을 곱해준다.
+            }
+            else
+            {
+                dir *= moveSpeed;  // 방향에 속력을 곱해준다.
+            }
+
+            dir.y = rigidbody.velocity.y;  // y값은 점프시 제외하고는 변화가 없어야하기에 기본 velocity(변화량)의 y 값을 넣어준다.
+
+            rigidbody.velocity = dir;  // 연산된 속도를 velocity(변화량)에 넣어준다.
+        }
     }
 
     void CameraLook()
@@ -152,7 +186,7 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
 
-        //Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
-        //canLook = !toggle;
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = !toggle;
     }
 }

@@ -7,7 +7,7 @@ public class DayNightCycle : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float time;
     public float fullDayLength;
-    public float startTime = 0.4f;
+    public float startTime = 0.2f;
     private float timeRate;
     public Vector3 noon; // Vector3(90, 0, 0) = 정오의 해의 위치의 로테이션 값
 
