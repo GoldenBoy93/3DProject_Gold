@@ -8,8 +8,8 @@ public class JumpingPad : MonoBehaviour
     // 충돌된 객체가 PlayerController를 상속받고 있으면 점프
     private void OnTriggerEnter(Collider other)
     {
-        PlayerController playerController = other.GetComponent<PlayerController>();
+        Rigidbody playerRb = other.GetComponent<Rigidbody>();
 
-        playerController.HighJump(padJumpPower);
+        playerRb.AddForce(Vector2.up * padJumpPower, ForceMode.Impulse);
     }
 }

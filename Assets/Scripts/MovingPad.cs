@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class MovingPad : MonoBehaviour
 {
-    public float speed = 1f;
-    public float targetPointDistance = 1f;
-    private Vector3 startPoint;
-    bool movingForward = true;
+    public float speed = 1f; // MovingPad의 이동 속도
+    public float targetPointDistance = 1f; // 타겟 포인트까지의 거리
+    private Vector3 startPoint; // 처음 위치
+    bool movingForward = true;  // 현재 MovingPad가 나아가는 중인지 여부
 
     private void Awake()
     {
-        startPoint = transform.position;
+        startPoint = transform.position; // MovingPad의 처음 위치를 할당
     }
 
     private void FixedUpdate()
@@ -43,7 +43,6 @@ public class MovingPad : MonoBehaviour
         }
     }
 
-    // 충돌된 객체가 PlayerController를 상속받고 있으면 점프
     private void OnTriggerEnter(Collider other)
     {
         // 충돌한 오브젝트가 플레이어인지 확인 (태그 사용)
