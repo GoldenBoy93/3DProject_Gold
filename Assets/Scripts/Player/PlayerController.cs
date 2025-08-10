@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.Timeline.TimelinePlaybackControls;
@@ -46,6 +47,8 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+
+        Debug.Log($"현재 속도: {moveSpeed}");
     }
 
     // 카메라 연산 -> 모든 연산이 끝나고 카메라 움직임
@@ -126,6 +129,26 @@ public class PlayerController : MonoBehaviour
 
             rigidbody.velocity = dir;  // 연산된 속도를 velocity(변화량)에 넣어준다.
         }
+    }
+
+    // 속도증가량, 증가시간 받아옴
+    public void SpeedBoost(float amount, float Second)
+    {
+        float firstMoveSpeed = moveSpeed;  // 원래 속도를 저장
+
+        moveSpeed += amount;  // amount만큼 속도 증가
+        Debug.Log($"속도 증가: {moveSpeed}");
+
+        // Second초 후 타임오버
+        StartCoroutine(SpeedCountdownSecond(Second, firstMoveSpeed));
+    }
+
+    public IEnumerator SpeedCountdownSecond(float Second, float firstMoveSpeed)
+    {
+        yield return new WaitForSeconds(Second);
+
+        moveSpeed = firstMoveSpeed;
+        Debug.Log($"TimeOver");
     }
 
     void CameraLook()
