@@ -40,10 +40,20 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         }
     }
 
-    public IEnumerator Heal(float amount)
+    // 그냥 힐
+    public void Heal(float amount)
     {
-        Debug.Log("플레이어 회복.");
+        health.Add(amount);
+    }
 
+    // 음식 먹었을 때 -> 코루틴힐
+    public void FoodHeal(float amount)
+    {
+        StartCoroutine(DotHeal(amount));
+    }
+
+    public IEnumerator DotHeal(float amount)
+    {
         // 회복 총량이 될 때까지 1씩 증가시키는 코루틴
         for (float i = 0; i < amount; i += 1f)
         {

@@ -42,6 +42,7 @@ public class EquipTool : Equip
         attacking = false;
     }
 
+    // 애니메이션 이벤트 지점 눌러서 인스펙터 확인하면 EquipTool.OnHit()를 연결해놓은 것.
     public void OnHit()
     {
         Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));

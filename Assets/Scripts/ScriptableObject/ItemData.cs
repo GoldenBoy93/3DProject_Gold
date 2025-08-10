@@ -13,7 +13,8 @@ public enum ItemType
 public enum ConsumableType
 {
     Health,
-    Hunger
+    Hunger,
+    Stamina,
 }
 
 [Serializable]
@@ -42,4 +43,7 @@ public class ItemData : ScriptableObject
 
     [Header("Equip")]
     public GameObject equipPrefab;
+
+    // 이 배열에 HealEffect와 StaminaEffect ScriptableObject를 할당
+    public ItemEffect[] effects;
 }

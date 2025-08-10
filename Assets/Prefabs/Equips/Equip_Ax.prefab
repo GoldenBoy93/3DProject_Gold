@@ -52,7 +52,6 @@ MonoBehaviour:
   doesGatherResources: 1
   doesDealDamage: 0
   damage: 0
-  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!95 &5873148020940454321
 Animator:
   serializedVersion: 5
@@ -85,6 +84,7 @@ GameObject:
   - component: {fileID: 5892866382560498125}
   - component: {fileID: 7379272601871523432}
   - component: {fileID: 4723297566123616930}
+  - component: {fileID: 3620847080469283156}
   m_Layer: 8
   m_Name: Ax_01
   m_TagString: Untagged
@@ -101,7 +101,7 @@ Transform:
   m_GameObject: {fileID: 6524724565701839735}
   serializedVersion: 2
   m_LocalRotation: {x: 0.21451011, y: 0.7333833, z: 0.012194192, w: 0.6449695}
-  m_LocalPosition: {x: 0.4, y: -0.6, z: 0.4}
+  m_LocalPosition: {x: 0.4, y: 1, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -157,3 +157,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3620847080469283156
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524724565701839735}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.38201624, y: 0.8473046, z: 0.13167861}
+  m_Center: {x: -0.07051784, y: 0.16591467, z: -0.0000001680708}
