@@ -33,12 +33,10 @@ public class UIInventory : MonoBehaviour
     private int curEquipIndex;
 
     private PlayerController controller;
-    private PlayerCondition condition;
 
     void Start()
     {
         controller = GameManager.Instance.Player.controller;
-        condition = GameManager.Instance.Player.condition;
         dropPosition = GameManager.Instance.Player.dropPosition;
 
         // Action 호출 시 필요한 함수 등록
@@ -213,7 +211,7 @@ public class UIInventory : MonoBehaviour
         // useItem에 정의된 모든 효과를 순회하며 적용
         foreach (ItemEffect effect in selectedItem.effects)
         {
-            effect.ApplyEffect();
+            effect.ApplyEffect(selectedItem);
         }
 
         RemoveSelctedItem();

@@ -64,7 +64,6 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     public void Eat(float amount)
     {
-        Debug.Log("¹äÀ» ¸Ô¾ú´Ù.");
         hunger.Add(amount);
     }
 
