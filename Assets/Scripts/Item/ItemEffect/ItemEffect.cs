@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.PlayerLoop;
 
 // 모든 아이템 효과의 기본이 되는 추상 클래스
@@ -93,14 +94,48 @@ public class SpeedBoostEffect : ItemEffect
     {
         PlayerController controller = GameManager.Instance.Player.controller;
 
+        float value = 0;
+        float value2 = 0;
+
         for (int i = 0; i < selectedItem.consumables.Length; i++)
         {
             if (selectedItem.consumables[i].type == ConsumableType.Speed)
             {
-                controller.SpeedBoost(selectedItem.consumables[i].value, selectedItem.consumables[i].value2);
+                value = selectedItem.consumables[i].value;
+            }
 
-                Debug.Log($"{selectedItem.consumables[i].value2}초 동안 {selectedItem.consumables[i].value}만큼 속도가 증가합니다.");
+            if (selectedItem.consumables[i].type == ConsumableType.Second)
+            {
+                value2 = selectedItem.consumables[i].value;
             }
         }
+
+        controller.SpeedBoost(value, value2);
+
+        Debug.Log($"{value2}초 동안 {value}만큼 속도가 증가합니다.");
+    }
+}
+
+// 무적
+[CreateAssetMenu(menuName = "Item Effects/Invincibility")]
+public class InvincibilityEffect : ItemEffect
+{
+    public override void ApplyEffect(ItemData selectedItem)
+    {
+        PlayerCondition condition = GameManager.Instance.Player.condition;
+
+        float value = 0;
+
+        for (int i = 0; i < selectedItem.consumables.Length; i++)
+        {
+            if (selectedItem.consumables[i].type == ConsumableType.Second)
+            {
+                value = selectedItem.consumables[i].value;
+            }
+        }
+
+        condition.SetInvincibility(value);
+
+        Debug.Log($"{value}초 동안 무적이 됩니다.");
     }
 }

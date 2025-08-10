@@ -77,10 +77,36 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         Debug.Log("플레이어가 죽었다.");
     }
 
+    bool Invincibility = false; // 무적 상태 여부
+
     public void TakePhysicalDamage(int damageAmount)
     {
+        if (Invincibility)
+        {
+            Debug.Log("무적 상태라서 데미지를 받지 않습니다.");
+            return; // 무적 상태면 데미지 받지 않음
+        }
         health.Subtract(damageAmount);
         onTakeDamage?.Invoke();
+    }
+
+    // 무적 코루틴함수 발사대
+    public void SetInvincibility(float second)
+    {
+        StartCoroutine(InvincibilityCountdownSecond(second));
+    }
+
+    // 무적 코루틴함수
+    public IEnumerator InvincibilityCountdownSecond(float Second)
+    {
+        Invincibility = true;
+        Debug.Log($"무적상태");
+
+        yield return new WaitForSeconds(Second);
+        Debug.Log($"무적끝");
+
+        Invincibility = false;
+        Debug.Log($"TimeOver");
     }
 
     public bool UseStamina(float amount)
