@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Item_Canon
   m_EditorClassIdentifier: 
   displayName: "\uB300\uD3EC"
-  description: "\uC55E\uC5D0 \uC11C\uC788\uC73C\uBA74 \uB0A0\uC544\uAC04\uB2E4"
+  description: "2\uCD08 \uD6C4 \uBC1C\uC0AC"
   type: 3
   icon: {fileID: 0}
   dropPrefab: {fileID: 0}
