@@ -2692,7 +2692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc10b08f940d6cd49bd244b0813d1637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  padJumpPower: 500
+  padJumpPower: 200
 --- !u!65 &554946521
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15718,7 +15718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29947b2f3e3919f4891201caebbec095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootPower: 500
+  shootPower: 300
 --- !u!33 &5142532879100612204
 MeshFilter:
   m_ObjectHideFlags: 0
