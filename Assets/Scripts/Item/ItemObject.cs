@@ -34,6 +34,12 @@ public class ItemObject : MonoBehaviour, IInteractable
             // Door의 SetState 메서드를 호출하여 상태를 변경
             curInteractGameObject.GetComponent<Door>().SetState();
         }
+        else if (curInteractGameObject.GetComponent<Chest>() != null)
+        {
+            // 현재 상호작용 게임 오브젝트가 Door 컴포넌트를 가지고 있다면,
+            // Door의 SetState 메서드를 호출하여 상태를 변경
+            curInteractGameObject.GetComponent<Chest>().SetState();
+        }
         return;
     }
 }
