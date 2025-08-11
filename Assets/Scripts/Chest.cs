@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 상태를 구별하기 위한 enum 선언
-public enum DoorState
+public enum ChestState
 {
     Closed,
     Open,
 }
 
-public class Door : MonoBehaviour
+public class Chest : MonoBehaviour
 {
-    private DoorState state;
+    private ChestState state;
     private Animator animator;
 
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class Door : MonoBehaviour
     void Update()
     {
         // Open 상태일때 애니메이터의 PlayAnimation 파라미터를 true로 설정
-        animator.SetBool("PlayAnimation", state == DoorState.Open);
+        animator.SetBool("PlayAnimation", state == ChestState.Open);
     }
 
     public void SetState()
@@ -32,15 +32,13 @@ public class Door : MonoBehaviour
         switch (state)
         {
             // 현재 Oen 상태라면 Closed로 변경
-            case DoorState.Open:
-                state = DoorState.Closed;
-                Debug.Log("Door is now Closed");
+            case ChestState.Open:
+                state = ChestState.Closed;
                 return;
 
             // 현재 Closed 상태라면 Open으로 변경
-            case DoorState.Closed:
-                state = DoorState.Open;
-                Debug.Log("Door is now Open");
+            case ChestState.Closed:
+                state = ChestState.Open;
                 return;
         }
     }
