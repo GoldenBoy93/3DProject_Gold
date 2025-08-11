@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Item_Door
   m_EditorClassIdentifier: 
   displayName: "\uBB38"
-  description: "'E'\uD0A4\uB97C \uB20C\uB7EC \uC5F4\uACE0 \uB2EB\uAE30"
+  description: "'E'\uD0A4\uB97C \uB20C\uB7EC \uC5F4\uACE0 \uB2EB\uAE30 / \uBB38\uC744
+    \uC5F4\uACE0 \uB4E4\uC5B4\uAC00\uBCF4\uC790"
   type: 3
   icon: {fileID: 0}
   dropPrefab: {fileID: 0}
@@ -21,4 +22,5 @@ MonoBehaviour:
   maxStackAmount: 0
   consumables: []
   equipPrefab: {fileID: 0}
+  isGetable: 0
   effects: []

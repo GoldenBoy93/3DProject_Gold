@@ -2633,27 +2633,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8992356726110857373, guid: 669b2694352ff2146892de958496eabd, type: 3}
   m_PrefabInstance: {fileID: 542278323}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &546909860
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5721723475183791416}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.638818, y: 3.2974682, z: 0.39488158}
-  m_Center: {x: -0.6579455, y: 1.647625, z: 0.000003375113}
 --- !u!54 &546909864
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16145,7 +16124,6 @@ GameObject:
   - component: {fileID: 238642693990897832}
   - component: {fileID: 8581543192420523065}
   - component: {fileID: 5915041323059742190}
-  - component: {fileID: 546909860}
   - component: {fileID: 546909864}
   - component: {fileID: 8581543192420523066}
   - component: {fileID: 8581543192420523067}
@@ -17975,6 +17953,8 @@ GameObject:
   - component: {fileID: 6393064947352502014}
   - component: {fileID: 1510143991946118478}
   - component: {fileID: 7525116303637384512}
+  - component: {fileID: 8644115839852262844}
+  - component: {fileID: 8644115839852262845}
   m_Layer: 0
   m_Name: Wall_DoorStand
   m_TagString: Untagged
@@ -17982,6 +17962,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!65 &8644115839852262844
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8644115839852262843}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: -0.026771909, y: 1, z: 0}
+--- !u!114 &8644115839852262845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8644115839852262843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e6b3e513cfeb648b6cfd551e63b7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8798257794806153311
 GameObject:
   m_ObjectHideFlags: 0
