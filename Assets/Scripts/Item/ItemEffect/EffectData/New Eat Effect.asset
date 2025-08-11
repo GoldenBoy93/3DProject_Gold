@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Eat
-  m_EditorClassIdentifier: Assembly-CSharp::EatEffect
+  m_Script: {fileID: 11500000, guid: 21d2fe2a041ba0443a4905e4bdd1f5a4, type: 3}
+  m_Name: New Eat Effect
+  m_EditorClassIdentifier: 

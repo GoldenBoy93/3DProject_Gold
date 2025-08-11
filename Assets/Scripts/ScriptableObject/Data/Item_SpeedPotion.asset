@@ -27,4 +27,4 @@ MonoBehaviour:
   equipPrefab: {fileID: 0}
   isGetable: 1
   effects:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 4871a8956bdbb464c9af6f7a3b8a59a4, type: 2}

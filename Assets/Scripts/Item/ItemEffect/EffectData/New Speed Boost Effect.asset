@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: SpeedBoost
-  m_EditorClassIdentifier: Assembly-CSharp::SpeedBoostEffect
+  m_Script: {fileID: 11500000, guid: df567a7cbf8abd147900b58f4bce0268, type: 3}
+  m_Name: New Speed Boost Effect
+  m_EditorClassIdentifier: 
