@@ -13,11 +13,11 @@ public class Interaction : MonoBehaviour
     private IInteractable curInteractable;    // 현재 상호작용 인터페이스
 
     public TextMeshProUGUI promptText;
-    private Camera camera;
+    private Camera playerCamera;
 
     void Start()
     {
-        camera = Camera.main;
+        playerCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class Interaction : MonoBehaviour
         {
             lastCheckTime = Time.time;
 
-            Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+            Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))

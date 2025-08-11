@@ -47,18 +47,18 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     }
 
     // 음식 먹었을 때 -> 코루틴힐
-    public void FoodHeal(float amount)
+    public void DotHeal(float amount)
     {
-        StartCoroutine(DotHeal(amount));
+        StartCoroutine(DotHealCoroutine(amount));
     }
 
-    public IEnumerator DotHeal(float amount)
+    public IEnumerator DotHealCoroutine(float amount)
     {
         // 회복 총량이 될 때까지 1씩 증가시키는 코루틴
         for (float i = 0; i < amount; i += 1f)
         {
             health.Add(1f);
-            yield return new WaitForSeconds(0.5f); // 회복 애니메이션 시간
+            yield return new WaitForSeconds(1f);
         }
     }
 
@@ -84,7 +84,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         if (Invincibility)
         {
             Debug.Log("무적 상태라서 데미지를 받지 않습니다.");
-            return; // 무적 상태면 데미지 받지 않음
+            return;
         }
         health.Subtract(damageAmount);
         onTakeDamage?.Invoke();
@@ -100,13 +100,10 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public IEnumerator InvincibilityCountdownSecond(float Second)
     {
         Invincibility = true;
-        Debug.Log($"무적상태");
 
         yield return new WaitForSeconds(Second);
-        Debug.Log($"무적끝");
 
         Invincibility = false;
-        Debug.Log($"TimeOver");
     }
 
     public bool UseStamina(float amount)
