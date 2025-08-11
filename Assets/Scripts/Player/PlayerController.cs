@@ -1,7 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,12 +28,12 @@ public class PlayerController : MonoBehaviour
 
     public Action inventory;  // 인벤토리 열기/닫기 Action
     // Rigidbody를 rigidbody로 선언해서 변수명을 활용할 수 있도록함.
-    private Rigidbody rigidbody;
+    private Rigidbody playerRigidbody;
 
     private void Awake()
     {
         // 위에서 선언한 rigidbody 변수를 현재 오브젝트에 붙어있는 Rigidbody 컴포넌트를 가져와 할당
-        rigidbody = GetComponent<Rigidbody>();
+        playerRigidbody = GetComponent<Rigidbody>();
     }
 
     void Start()
@@ -84,14 +84,12 @@ public class PlayerController : MonoBehaviour
             && IsGrounded()
             && GameManager.Instance.Player.condition.UseStamina(useStamina))
         {
-            rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+            playerRigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         }
     }
 
     public void OnDashInput(InputAction.CallbackContext context)
     {
-        Debug.Log("대시 입력됨");
-
         if (context.phase == InputActionPhase.Started)
         {
             isDash = true;
@@ -122,10 +120,27 @@ public class PlayerController : MonoBehaviour
                 dir *= moveSpeed;  // 방향에 속력을 곱해준다.
             }
 
-            dir.y = rigidbody.velocity.y;  // y값은 점프시 제외하고는 변화가 없어야하기에 기본 velocity(변화량)의 y 값을 넣어준다.
+            dir.y = playerRigidbody.velocity.y;  // y값은 점프시 제외하고는 변화가 없어야하기에 기본 velocity(변화량)의 y 값을 넣어준다.
 
-            rigidbody.velocity = dir;  // 연산된 속도를 velocity(변화량)에 넣어준다.
+            playerRigidbody.velocity = dir;  // 연산된 속도를 velocity(변화량)에 넣어준다.
         }
+    }
+
+    // 속도증가량, 증가시간 받아옴
+    public void SpeedBoost(float amount, float Second)
+    {
+        moveSpeed += amount;  // amount만큼 속도 증가
+
+        // Second초 후 타임오버
+        StartCoroutine(SpeedCountdownSecond(Second, amount));
+    }
+
+    public IEnumerator SpeedCountdownSecond(float Second, float amount)
+    {
+        yield return new WaitForSeconds(Second);
+
+        // 시간이 지나면 무브스피드의 증가속도만큼 감소
+        moveSpeed -= amount;
     }
 
     void CameraLook()

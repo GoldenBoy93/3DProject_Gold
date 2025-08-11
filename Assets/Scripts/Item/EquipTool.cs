@@ -15,12 +15,12 @@ public class EquipTool : Equip
     public int damage;
 
     private Animator animator;
-    private Camera camera;
+    private Camera weqponCamera;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        camera = Camera.main;
+        weqponCamera = Camera.main;
     }
 
     public override void OnAttackInput()
@@ -42,10 +42,10 @@ public class EquipTool : Equip
         attacking = false;
     }
 
+    // 애니메이션 이벤트 지점 눌러서 인스펙터 확인하면 EquipTool.OnHit()를 연결해놓은 것.
     public void OnHit()
     {
-        // 2강 Ray 복습
-        Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        Ray ray = weqponCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, attackDistance))

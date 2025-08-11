@@ -1,19 +1,21 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum ItemType
 {
     Equipable,
     Consumable,
-    Resource
+    Resource,
+    Interactable,
 }
 
 public enum ConsumableType
 {
     Health,
-    Hunger
+    Hunger,
+    Stamina,
+    Speed,
+    Second,
 }
 
 [Serializable]
@@ -42,4 +44,10 @@ public class ItemData : ScriptableObject
 
     [Header("Equip")]
     public GameObject equipPrefab;
+
+    [Header("Getable")]
+    public bool isGetable = false;
+
+    // 이 배열에 HealEffect와 StaminaEffect ScriptableObject를 할당
+    public ItemEffect[] effects;
 }

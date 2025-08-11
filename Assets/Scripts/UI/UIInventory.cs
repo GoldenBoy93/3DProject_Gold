@@ -1,7 +1,13 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+
+public interface IUsable
+{
+    void Use();
+}
 
 public class UIInventory : MonoBehaviour
 {
@@ -27,12 +33,10 @@ public class UIInventory : MonoBehaviour
     private int curEquipIndex;
 
     private PlayerController controller;
-    private PlayerCondition condition;
 
     void Start()
     {
         controller = GameManager.Instance.Player.controller;
-        condition = GameManager.Instance.Player.condition;
         dropPosition = GameManager.Instance.Player.dropPosition;
 
         // Action 호출 시 필요한 함수 등록
@@ -91,7 +95,7 @@ public class UIInventory : MonoBehaviour
 
     public void AddItem()
     {
-        // 10강 ItemObject 로직에서 Player에 넘겨준 정보를 가지고 옴
+        // ItemObject 로직에서 Player에 넘겨준 정보를 가지고 옴
         ItemData data = GameManager.Instance.Player.itemData;
 
         // 아이템이 중복 가능한지 canStack 여부 확인
@@ -204,23 +208,13 @@ public class UIInventory : MonoBehaviour
 
     public void OnUseButton()
     {
-        if (selectedItem.type == ItemType.Consumable)
+        // useItem에 정의된 모든 효과를 순회하며 적용
+        foreach (ItemEffect effect in selectedItem.effects)
         {
-            for (int i = 0; i < selectedItem.consumables.Length; i++)
-            {
-                switch (selectedItem.consumables[i].type)
-                {
-                    case ConsumableType.Health:
-                        // PlayerCondition의 Heal 코루틴을 호출
-                        StartCoroutine(condition.Heal(selectedItem.consumables[i].value));
-                        break;
-                    case ConsumableType.Hunger:
-                        condition.Eat(selectedItem.consumables[i].value); 
-                        break;
-                }
-            }
-            RemoveSelctedItem();
+            effect.ApplyEffect(selectedItem);
         }
+
+        RemoveSelctedItem();
     }
 
     public void OnDropButton()
