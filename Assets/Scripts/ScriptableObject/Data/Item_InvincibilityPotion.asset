@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: "\uBB34\uC801 \uD3EC\uC158"
   description: "10\uCD08\uAC04 \uBB34\uC801"
-  type: 1
+  type: 0
   icon: {fileID: 0}
   dropPrefab: {fileID: 2583249690883492966, guid: be89db7dd5a8b214a91843c227e3391d, type: 3}
   canStack: 1
@@ -23,5 +23,6 @@ MonoBehaviour:
   - type: 4
     value: 10
   equipPrefab: {fileID: 0}
+  isGetable: 1
   effects:
   - {fileID: 11400000, guid: fc9410672d5538746a04b53c58c1bbc5, type: 2}
